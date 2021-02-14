@@ -4,8 +4,62 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper and Scissors</title>
+    <!-- css link -->
+    <link rel="stylesheet" href="./assets/stylesheets/main.css">
+    <!-- javascript -->
+    <script src="./script.js" defer></script>
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/36e351b577.js" crossorigin="anonymous"></script>
+
   </head>
   <body>
-    <script src="./script.js"></script>
+    <header class="heading">
+      <div class="container">
+        <h1>Rock Paper Scissors</h1>
+      </div>
+    </header>
+    <main>
+      <div class="hero">
+        <div class="container">
+          <div class="welcome">
+            
+          </div>
+          <div class="box-container">
+            <h2 class="display">Let's Play !</h2>
+            <div class="player-info">
+              <div class="user">
+                <div class="user-info">
+                  <h3>You -</h3>
+                  <h4></h4>
+                </div>
+                <div class="weapons user-weapons">
+                  <i class="fa fa-hand-rock-o" id="rock" aria-hidden="true"></i>
+                  <i class="fa fa-hand-paper-o paper" id="paper" aria-hidden="true"></i>
+                  <i class="fa fa-hand-scissors-o scissor" id="scissor" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="computer">
+                <div class="computer-info">
+                  <h3>Computer -</h3>
+                  <h4></h4>
+                </div>
+                <div class="weapons computer-weapons">
+                  <i class="fa fa-hand-rock-o" id="rock" aria-hidden="true"></i>
+                  <i class="fa fa-hand-paper-o paper" id="paper" aria-hidden="true"></i>
+                  <i class="fa fa-hand-scissors-o scissor" id="scissor" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="refresh">
+                <i class="fas fa-sync-alt"></i>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- <script src="./script.js"></script> -->
   </body>
 </html>
