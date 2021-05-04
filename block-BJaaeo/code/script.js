@@ -1,37 +1,38 @@
-const display = document.querySelector(".display");
-const keys = document.querySelector(".calculator-keys");
+function calculator(){
+let keys = document.querySelector(".calculator-keys");
+let display = document.querySelector(".display");
+let submit = document.querySelector(".submit");
 
-function handleCalculator(event){
-    console.log("test");
-    const key = event.target;
-    const keyContent = key.innerText
-    const action = key.dataset.action;
-    const displayNumber = display.innerText;
-    if(!action){
-        if(displayNumber === "0") {
-            display.innerText  = keyContent;
-        }
-        else {
-            display.innerText = displayNumber + keyContent;
-        }
-
+function handleEvent(event){
+    let child = keys.children;
+    [...child].forEach(e => e.classList.remove("is-pressed"));
+    console.log(child);
+    changeBackgroundColor(event)
+    if(display.innerText == "0"){
+        display.innerText = event.target.innerText;
     }
-    if(action === "add" || action === "subtract" || action === "multiply" || action === "division"){
-        
+    else if(event.target.dataset.action ==="calculate"){
+        display.innerText;
     }
-    if(action === "clear"){
+    else if(event.target.dataset.action === "clear"){
         display.innerText = "0";
-
     }
-    if(action === "calculate"){
-
+    else{
+        display.innerText += event.target.innerText;
     }
-    if(action === "decimal"){
-        display.innerText = displayNumber + keyContent;
+}
+function calculate(event){
+    let final = eval(display.innerText);
+    display.innerText = final;
+    return display.innerText;
+}
+function changeBackgroundColor(event){
+    event.target.classList.add("is-pressed");
+    return;
+}
+keys.addEventListener("click", handleEvent)
 
-    }
-    
-
+submit.addEventListener("click", calculate)
 }
 
-keys.addEventListener("click", handleCalculator);
+calculator();
