@@ -1,0 +1,14 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    line-height: 1.5;
+    // font-size: 16px;
+}
+body {
+    font-family: 'Lato', sans-serif;
+}
+.container {
+    max-width: 1000px;
+    margin:  0 auto;
+}
