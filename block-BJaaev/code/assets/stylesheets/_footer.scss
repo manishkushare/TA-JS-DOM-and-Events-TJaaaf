@@ -1,0 +1,27 @@
+.footer{
+    background-color: blanchedalmond;
+    .wrapper{
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+
+    }
+    
+}
+
+.filter_task{
+        display: flex;
+        // border: 1px solid black;
+        // width: 100%;
+        justify-content: center;
+        span{
+            margin: 0 1rem;
+            border: 1px solid black;
+            padding: 0.2rem 2rem;
+            cursor: pointer;
+        }
+    }
+
+.active {
+    background-color: cadetblue;
+}

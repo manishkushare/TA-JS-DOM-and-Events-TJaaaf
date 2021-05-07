@@ -104,4 +104,38 @@ li p {
 li input, li span {
   cursor: pointer;
 }
+
+.footer {
+  background-color: blanchedalmond;
+}
+
+.footer .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1rem;
+}
+
+.filter_task {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.filter_task span {
+  margin: 0 1rem;
+  border: 1px solid black;
+  padding: 0.2rem 2rem;
+  cursor: pointer;
+}
+
+.active {
+  background-color: cadetblue;
+}
 /*# sourceMappingURL=main.css.map */
