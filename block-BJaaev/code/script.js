@@ -1,9 +1,9 @@
 let input = document.querySelector("input[type= 'text']");
 let root = document.querySelector(".root");
-let todoArray = [];
+let todoArray = JSON.parse(localStorage.getItem("todo")) || [];
 
 function handleToDos(event){
-    if(event.keyCode === 13){
+    if(event.keyCode === 13 &&  event.target.value !== ""){
         todoArray.push({
             task : event.target.value,
             isDone: false,
@@ -11,20 +11,21 @@ function handleToDos(event){
         event.target.value = "";
     }
     createUI(todoArray,root);
-
-    
+    localStorage.setItem("todo",JSON.stringify(todoArray));
 }
 
 function handleDelete(event){
     let id = event.target.dataset.id;
     todoArray.splice(id,1);
     createUI(todoArray,root);
+    localStorage.setItem("todo",JSON.stringify(todoArray));
 }
 
 function handleIsDone(event){
     let id= event.target.id;
     todoArray[id].isDone = !todoArray[id].isDone
     createUI(todoArray,root);
+    localStorage.setItem("todo",JSON.stringify(todoArray));
 }
 
 function createUI(data,rootElem){
