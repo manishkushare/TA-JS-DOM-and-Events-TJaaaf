@@ -15,11 +15,18 @@ function handleForm(event){
     console.log(phoneNumber.value);
     handlePhooneNumber(phoneNumber);
     let password = form.elements.password;
-    handlePassword(password);
+    let confirmPassword = form.elements.confirm_password;
+    handlePassword(password,confirmPassword);
+
 }
 // hadnle username
 function handleUserName(elem){
-    if(elem.value.length < 4){
+    if(elem.value === ""){
+        errorMessage = "username cannot be empty";
+        updateErrorMessageInSpan(elem,errorMessage);
+        addError(elem)
+    }
+    else if(elem.value.length < 4){
         errorMessage = "can't be less than 4 characters";
         updateErrorMessageInSpan(elem,errorMessage);
         addError(elem);
@@ -33,7 +40,12 @@ function handleUserName(elem){
 }   
 // handle name
 function handleName(elem){
-    if(elem.value.split("").some(e => Number(e))){
+    if(elem.value === ""){
+        errorMessage = " name cannot be empty";
+        updateErrorMessageInSpan(elem,errorMessage);
+        addError(elem)
+    }
+    else if(elem.value.split("").some(e => Number(e))){
         errorMessage = "You can't use number in the name field";
         updateErrorMessageInSpan(elem,errorMessage);
         addError(elem);
@@ -52,7 +64,12 @@ function handleName(elem){
 }
 // handle email
 function handleEmail(elem){
-    if(!elem.value.includes("@") || elem.value.length < 6){
+    if(elem.value === ""){
+        errorMessage = "email cannot be empty";
+        updateErrorMessageInSpan(elem,errorMessage);
+        addError(elem)
+    }
+    else if(!elem.value.includes("@") || elem.value.length < 6){
         errorMessage = "Not a valid email";
         updateErrorMessageInSpan(elem,errorMessage);
         addError(elem);
@@ -65,7 +82,12 @@ function handleEmail(elem){
 }
 // handle phone number
 function handlePhooneNumber(elem){
-    if(!Number(elem.value)){
+    if(elem.value === ""){
+        errorMessage = "phone number cannot be empty";
+        updateErrorMessageInSpan(elem,errorMessage);
+        addError(elem)
+    }
+    else if(!Number(elem.value)){
         errorMessage = "Phone number can only contain numbers";
         updateErrorMessageInSpan(elem,errorMessage);
         addError(elem);
@@ -77,8 +99,28 @@ function handlePhooneNumber(elem){
     }
 }
 // password
-function handlePassword(elem){
+function handlePassword(elem1,elem2){
+    if(elem1.value === "" || elem2.value ===""){
+        errorMessage = "password cannot be empty"
+        updateErrorMessageInSpan(elem1,errorMessage);
+        updateErrorMessageInSpan(elem2,errorMessage)
+        addError(elem1);
+        addError(elem2);
+    }
     
+    else if(elem1.value !== elem2.value){
+        errorMessage = "Password and confirm password are not same";
+        updateErrorMessageInSpan(elem2,errorMessage);
+        addError(elem1);
+        addError(elem2);
+    }
+    else {
+        updateErrorMessageInSpan(elem2);
+        addSuccess(elem1);
+        addSuccess(elem2);
+        removeError(elem1);
+        removeError(elem2);
+    }
 }
 // stor user info in object
 function createInfo(event){
