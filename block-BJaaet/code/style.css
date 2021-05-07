@@ -86,3 +86,6 @@ li{
     justify-content: space-around;
     padding: 0.5rem 0;
 }
+span,input {
+    cursor: pointer;
+}
