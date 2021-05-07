@@ -26,7 +26,6 @@ function handleIsDone(event){
     todoArray[id].isDone = !todoArray[id].isDone
     createUI(todoArray,root);
 }
-git
 
 function createUI(data,rootElem){
     rootElem.innerHTML = "";
