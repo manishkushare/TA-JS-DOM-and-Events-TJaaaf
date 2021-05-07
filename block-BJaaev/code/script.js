@@ -10,7 +10,7 @@ function handleToDos(event){
         })
         event.target.value = "";
     }
-    createUI();
+    createUI(todoArray,root);
 
     
 }
@@ -18,19 +18,19 @@ function handleToDos(event){
 function handleDelete(event){
     let id = event.target.dataset.id;
     todoArray.splice(id,1);
-    createUI();
+    createUI(todoArray,root);
 }
 
 function handleIsDone(event){
     let id= event.target.id;
     todoArray[id].isDone = !todoArray[id].isDone
-    createUI();
+    createUI(todoArray,root);
 }
+git
 
-
-function createUI(){
-    root.innerHTML = "";
-    todoArray.forEach((task,index) => {
+function createUI(data,rootElem){
+    rootElem.innerHTML = "";
+    data.forEach((task,index) => {
         let li = document.createElement("li");
         let input = document.createElement("input");
         input.setAttribute("type","checkbox");
@@ -44,11 +44,11 @@ function createUI(){
         span.addEventListener("click",handleDelete)
         span.innerText = "X";
         li.append(input,p,span);
-        root.append(li);
+        rootElem.append(li);
     })
     
 }
-createUI();
+createUI(todoArray,root);
 
 
 input.addEventListener("keyup", handleToDos)
