@@ -105,6 +105,10 @@ li input, li span {
   cursor: pointer;
 }
 
+.input_para_toggle {
+  width: 100%;
+}
+
 .footer {
   background-color: blanchedalmond;
 }

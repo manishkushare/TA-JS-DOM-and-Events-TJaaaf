@@ -58,14 +58,26 @@ function editData(e) {
   const input = document.createElement("input");
   let id = e.target.dataset.paraId;
   input.setAttribute("value", el.textContent);
+  input.classList.add("input_para_toggle");
   el.replaceWith(input);
 
   const save = function() {
     const previous = document.createElement(el.tagName.toLowerCase());
-    previous.onclick = editData;
-    previous.textContent = input.value;
-    todoArray[id].task = input.value; 
+    previous.addEventListener("keyup", (event)=> {
+        if(event.keyCode ===  13){
+            editData;
+        }
+    })
+    if(input.value === "" ){
+        previous.textContent = el.textContent;
+        todoArray[id].task = el.textContent; 
 
+    }
+    else {
+        previous.textContent = input.value;
+        todoArray[id].task = input.value;
+    }
+    
     input.replaceWith(previous);
     createUI(todoArray,root);
     localStorage.setItem("todo",JSON.stringify(todoArray));
