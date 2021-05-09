@@ -6,6 +6,8 @@ let all = document.querySelector(".all");
 let activeTab = document.querySelector(".active_tab");
 let completed = document.querySelector(".completed");
 let clearCompleted = document.querySelector(".clear_completed");
+
+// handle input and sst
 function handleToDos(event){
     if(event.keyCode === 13 ){
         todoArray.push({
@@ -13,7 +15,6 @@ function handleToDos(event){
             isDone: false,
         });
         
-        // ++count ;
         event.target.value = "";
     }
     createUI(todoArray,root);
@@ -22,29 +23,31 @@ function handleToDos(event){
     showAlltask(todoArray,root);
     localStorage.setItem("todo",JSON.stringify(todoArray));
 }
+
 // task left count
 function displayTaskLeft(data){
-    // console.log("test");
     let filterdData = data.filter(e => !e.isDone);
-    // console.log(filterdData);
     taskLeft.innerText = `${filterdData.length} tasks left`;
 }
+
 // for all task
 function showAlltask(){
-    // console.log("hey am inside show all");
-    // all.classList.add("active");
     createUI(todoArray,root);
+    localStorage.setItem("todo", JSON.stringify(todoArray));
 }
+
 // active tab
 function handleActive(){
     let filterdData = todoArray.filter(e => !e.isDone);
     createUI(filterdData,root);
 }
+
 // completed tab
 function handleCompleted(){
     let filteredData = todoArray.filter(e => e.isDone);
     createUI(filteredData,root);
 }
+
 // clear complted
 function handleClearCompleted(event){
     todoArray = todoArray.filter(e => !e.isDone);
@@ -52,6 +55,7 @@ function handleClearCompleted(event){
     localStorage.setItem("todo",JSON.stringify(todoArray));
 
 }
+
 // handle edit on double click
 function editData(e) {
   const el = e.target;
@@ -96,6 +100,7 @@ function editData(e) {
   input.focus();
   
 }
+
 // delete task
 function handleDelete(event){
     let id = event.target.dataset.id;
@@ -104,6 +109,7 @@ function handleDelete(event){
     displayTaskLeft(todoArray);
     localStorage.setItem("todo",JSON.stringify(todoArray));
 }
+
 // handle isDone
 function handleIsDone(event){
     let id= event.target.id;
@@ -112,6 +118,7 @@ function handleIsDone(event){
     createUI(todoArray,root);
     localStorage.setItem("todo",JSON.stringify(todoArray));
 }
+
 // create UI
 function createUI(data,rootElem){
     rootElem.innerHTML = "";
