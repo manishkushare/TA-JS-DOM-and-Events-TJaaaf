@@ -135,6 +135,10 @@ li input, li span {
   cursor: pointer;
 }
 
+.clear_completed {
+  cursor: pointer;
+}
+
 .active {
   background-color: cadetblue;
 }

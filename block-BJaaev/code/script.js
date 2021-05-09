@@ -5,32 +5,33 @@ let todoArray = JSON.parse(localStorage.getItem("todo")) || [];
 let all = document.querySelector(".all");
 let activeTab = document.querySelector(".active_tab");
 let completed = document.querySelector(".completed");
-let clearComplted = document.querySelector(".clear_completed");
-
+let clearCompleted = document.querySelector(".clear_completed");
 function handleToDos(event){
     if(event.keyCode === 13 ){
         todoArray.push({
             task : event.target.value,
             isDone: false,
-        })
+        });
+        
+        // ++count ;
         event.target.value = "";
     }
     createUI(todoArray,root);
     displayTaskLeft(todoArray);
-    // showAlltask(todoArray,root)
-
+    handleClearCompleted();
+    showAlltask(todoArray,root);
     localStorage.setItem("todo",JSON.stringify(todoArray));
 }
 // task left count
 function displayTaskLeft(data){
-    console.log("test");
+    // console.log("test");
     let filterdData = data.filter(e => !e.isDone);
-    console.log(filterdData);
+    // console.log(filterdData);
     taskLeft.innerText = `${filterdData.length} tasks left`;
 }
 // for all task
 function showAlltask(){
-    console.log("hey am inside show all");
+    // console.log("hey am inside show all");
     // all.classList.add("active");
     createUI(todoArray,root);
 }
@@ -45,9 +46,43 @@ function handleCompleted(){
     createUI(filteredData,root);
 }
 // clear complted
-function handleClearCompleted(){
-    let filteredData = todoArray.filter(e => e.isDone);
-    
+function handleClearCompleted(event){
+    todoArray = todoArray.filter(e => !e.isDone);
+    createUI(todoArray,root);
+    localStorage.setItem("todo",JSON.stringify(todoArray));
+
+}
+// handle edit on double click
+function editData(e) {
+  const el = e.target;
+  const input = document.createElement("input");
+  let id = e.target.dataset.paraId;
+  input.setAttribute("value", el.textContent);
+  el.replaceWith(input);
+
+  const save = function() {
+    const previous = document.createElement(el.tagName.toLowerCase());
+    previous.onclick = editData;
+    previous.textContent = input.value;
+    todoArray[id].task = input.value; 
+
+    input.replaceWith(previous);
+    createUI(todoArray,root);
+    localStorage.setItem("todo",JSON.stringify(todoArray));
+  };
+
+  /**
+    We're defining the callback with `once`, because we know that
+    the element will be gone just after that, and we don't want 
+    any callbacks leftovers take memory. 
+    Next time `p` turns into `input` this single callback 
+    will be applied again.
+  */
+  input.addEventListener('blur', save, {
+    once: true,
+  });
+  input.focus();
+  
 }
 // delete task
 function handleDelete(event){
@@ -76,7 +111,10 @@ function createUI(data,rootElem){
         input.setAttribute("id",index);
         input.addEventListener("change", handleIsDone)
         let p= document.createElement("p");
+        // .setAttribute("type","text");
         p.innerText = task.task;
+        p.setAttribute("data-para-id",index);
+        p.addEventListener("dblclick",editData);
         let span = document.createElement("span");
         span.setAttribute("data-id",index);
         span.addEventListener("click",handleDelete)
