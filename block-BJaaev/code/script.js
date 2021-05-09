@@ -6,6 +6,8 @@ let all = document.querySelector(".all");
 let activeTab = document.querySelector(".active_tab");
 let completed = document.querySelector(".completed");
 let clearCompleted = document.querySelector(".clear_completed");
+let nav = document.querySelectorAll(".filter_task > span");
+console.log(nav);
 
 // handle input and sst
 function handleToDos(event){
@@ -31,19 +33,25 @@ function displayTaskLeft(data){
 }
 
 // for all task
-function showAlltask(){
+function showAlltask(event){
+    nav.forEach(element => element.classList.remove("active"));
+    event.target.classList.add("active");
     createUI(todoArray,root);
     localStorage.setItem("todo", JSON.stringify(todoArray));
 }
 
 // active tab
-function handleActive(){
+function handleActive(event){
+    nav.forEach(element => element.classList.remove("active"));
+    event.target.classList.add("active");
     let filterdData = todoArray.filter(e => !e.isDone);
     createUI(filterdData,root);
 }
 
 // completed tab
-function handleCompleted(){
+function handleCompleted(event){
+    nav.forEach(element => element.classList.remove("active"));
+    event.target.classList.add("active");
     let filteredData = todoArray.filter(e => e.isDone);
     createUI(filteredData,root);
 }
@@ -53,6 +61,9 @@ function handleClearCompleted(event){
     todoArray = todoArray.filter(e => !e.isDone);
     createUI(todoArray,root);
     localStorage.setItem("todo",JSON.stringify(todoArray));
+    nav.forEach(element => element.classList.remove("active"));
+    nav[0].classList.add("active")
+
 
 }
 
@@ -140,13 +151,14 @@ function createUI(data,rootElem){
         span.innerText = "X";
         li.append(input,p,span);
         rootElem.append(li);
+        
     })
     
 }
 createUI(todoArray,root);
 displayTaskLeft(todoArray);
 
-
+nav[0].classList.add("active")
 input.addEventListener("keyup", handleToDos);
 all.addEventListener("click",showAlltask);
 activeTab.addEventListener("click",handleActive);

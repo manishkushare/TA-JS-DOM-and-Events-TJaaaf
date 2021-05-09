@@ -5,21 +5,34 @@
     margin:2rem;
     
 }
+
 li {
     display: flex;
     justify-content: space-between;
     padding: 1rem ;
+    border-bottom: 2px solid black;
+
     p {
         display: block;
         width: 100%;
-        border: 1px solid black;
         margin: 0 1rem;
     }
     input,span{
         cursor: pointer;
     }
+
 }
 
 .input_para_toggle{
     width: 100%;
 }   
+#input_task{
+    padding: 1rem 0;
+    
+}
+
+.root{
+    li:last-child{
+        border: 0;
+    }
+}
