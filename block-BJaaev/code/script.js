@@ -157,8 +157,9 @@ function createUI(data,rootElem){
 }
 createUI(todoArray,root);
 displayTaskLeft(todoArray);
+nav[0].classList.add("active");
 
-nav[0].classList.add("active")
+
 input.addEventListener("keyup", handleToDos);
 all.addEventListener("click",showAlltask);
 activeTab.addEventListener("click",handleActive);
