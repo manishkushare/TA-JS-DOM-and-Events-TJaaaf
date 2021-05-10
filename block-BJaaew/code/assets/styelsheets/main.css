@@ -73,6 +73,16 @@ table {
   font-size: 2rem;
 }
 
+.header .input_search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 1rem 0;
+}
+
 .navigation {
   margin: 2rem 0;
 }
