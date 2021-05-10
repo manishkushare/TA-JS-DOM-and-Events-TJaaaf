@@ -1,6 +1,7 @@
 let navRoot = document.querySelector(".navigation > ul");
 let root= document.querySelector(".house_list")
 let input = document.querySelector("input");
+let navList = document.querySelectorAll(".house");
 function createNav(){
     got.houses.forEach(house => {
         let li = document.createElement("li");
@@ -14,6 +15,7 @@ function createNav(){
 }
 function handleSearch(event){
     root.innerHTML = "";
+    navList.forEach(h => h.classList.remove("active"));
     let filteredSearchData = got.houses.reduce((acc,cv)=>{
         let filteredArray = cv.people.filter(p => {
              return p.name.toLowerCase().includes(event.target.value.toLowerCase());
@@ -26,8 +28,6 @@ function handleSearch(event){
     createUI(filteredSearchData,root)
 }
 function handleFilter(event){
-    let navList = document.querySelectorAll(".house");
-    console.log(navList)
     navList.forEach(h => h.classList.remove("active"));
     event.target.classList.add("active");
     let houseName = event.target.dataset.house
