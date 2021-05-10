@@ -1,0 +1,19 @@
+.navigation {
+    margin: 2rem 0;
+    ul{
+        display: flex;
+        flex-wrap: wrap;
+        // flex-shrink: 0;
+        // border: 2px solid black;
+        justify-content: center;
+
+    }
+    .house{
+        padding: 1rem;
+        margin:  1rem;
+        background-color: black;
+        color: white;
+        border-radius: 1rem;
+        cursor: pointer;
+    }
+}

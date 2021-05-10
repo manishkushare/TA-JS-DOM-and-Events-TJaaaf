@@ -1,0 +1,13 @@
+// * {
+//     box-sizing: border-box;
+// }
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.active {
+    background-color:rgb(94, 157, 240) !important;
+    color: black !important;
+}
